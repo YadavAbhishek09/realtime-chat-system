@@ -48,14 +48,14 @@ Design and implement a real-time chat system that supports:
 
 ---
 ## High-Level Architecture
-
 Client (React)
-|
-WebSocket / REST
-|
+     |
+ WebSocket / REST
+     |
 Spring Boot Backend
-|
-Room & Session Management
+     |
+ Room & Session Management
+
 
 
 ### Architectural Principles
