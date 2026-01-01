@@ -178,10 +178,3 @@ Java Backend  Full-Stack Engineer
 
 
 
-
-
-
-
-
-## High-Level Architecture
-
