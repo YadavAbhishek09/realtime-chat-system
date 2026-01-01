@@ -1,91 +1,187 @@
+# Real-Time Chat System
 
-Real-time Room-Based Chat Application
+A real-time, room-based chat application built using **Java, Spring Boot, and React**.
+The system allows users to create or join chat rooms and exchange messages instantly
+using WebSocket-based communication.
 
---- Overview  ---
+This project focuses on real-time messaging, session management, and clean
+backend–frontend separation, following product-grade engineering practices.
 
-This is a real-time chat application where users can create or join rooms and communicate instantly. Built using Spring Boot for the backend and React.js for the frontend, it leverages WebSockets for real-time messaging.
+---
 
-FEATURES
+## Project Structure
 
-✔ Create and join chat rooms
-✔ Real-time messaging using WebSockets
-✔ User authentication and authorization
-✔ Active user tracking in rooms
-✔ Responsive UI with modern design
-✔ Optimized backend with Spring Boot
-
-TECH - STACK
-
-FRONTEND :
-
--React.js
--HTML5, CSS3
--WebSocket client (Socket.io or native WebSockets)
+realtime-chat-system/
+├── chat-backend/
+└── chat-frontend/
 
 
-BACKEND :
+- **chat-backend**: Spring Boot backend handling WebSocket connections and REST APIs
+- **chat-frontend**: React frontend providing the user interface
 
--Spring Boot
--WebSockets
--Spring Security (for authentication)
--MySQL (Database)
--JPA/Hibernate (ORM)
+---
 
+## Problem Statement
 
--- Installation & Setup --
+Design and implement a real-time chat system that supports:
+- Multiple chat rooms
+- Concurrent users
+- Low-latency message delivery
+- Clean separation of frontend and backend responsibilities
 
-Backend (Spring Boot) Setup
+---
 
-1. Clone the repository:
+## Tech Stack
 
-git clone https://github.com/your-username/chat-app-backend.git
-cd chat-app-backend
+### Backend
+- Java
+- Spring Boot
+- Spring WebSocket
+- REST APIs
 
+### Frontend
+- React
+- JavaScript
 
-2. Configure database in application.properties:
+### Communication
+- WebSockets for real-time messaging
 
-spring.datasource.url=jdbc:mysql://localhost:3306/chat_db
-spring.datasource.username=root
-spring.datasource.password=yourpassword
+---
+## High-Level Architecture
 
-
-3. Build and run the Spring Boot app:
-
-mvn clean install
-mvn spring-boot:run
-
-
-
-Frontend (React.js) Setup
-
-1. Clone the repository:
-
-git clone https://github.com/your-username/chat-app-frontend.git
-cd chat-app-frontend
-
-
-2. Install dependencies:
-    npm install
-
-3. Start the development server:
-    npm start
+Client (React)
+|
+WebSocket / REST
+|
+Spring Boot Backend
+|
+Room & Session Management
 
 
+### Architectural Principles
+- Event-driven communication
+- Stateless REST APIs combined with stateful WebSocket sessions
+- Clear separation of concerns
+- Backend-focused system design
 
-Usage
+---
 
-1. Open the frontend in your browser (http://localhost:3000).
-2. Create or join a chat room.
-3. Start chatting in real-time!
+## Core Features
+
+### Room Management
+- Create chat rooms
+- Join existing rooms
+- Broadcast messages within a room
+
+### Real-Time Messaging
+- WebSocket-based bidirectional communication
+- Instant message delivery to all users in a room
+- Supports multiple concurrent users
+
+### Session Handling
+- WebSocket session lifecycle management
+- Handles user connect and disconnect events
+- Cleans up sessions when users leave rooms
+
+---
+
+## Backend Design (chat-backend)
+
+### WebSocket Flow
+1. Client establishes a WebSocket connection
+2. User joins a specific room
+3. Messages are routed based on room ID
+4. Messages are broadcast to all connected users in the room
+5. Sessions are cleaned up on disconnect
+
+### Concurrency Considerations
+- Supports multiple active WebSocket sessions
+- Thread-safe message broadcasting
+- Proper handling of concurrent room access
+
+---
+
+## API & Communication Endpoints
+
+### WebSocket Endpoint
+- `/chat` – WebSocket endpoint for real-time communication
+
+### REST Endpoints (if applicable)
+- Create room
+- List available rooms
+
+---
+
+## Error Handling
+
+- Graceful handling of invalid room joins
+- Handles WebSocket connection failures
+- Safe cleanup of disconnected sessions
+
+---
+
+## How to Run Locally
+
+### Backend (chat-backend)
+
+1. Navigate to backend directory:
+2. Run the Spring Boot application:
+3. Backend runs on: http://localhost:8080
 
 
-Future Improvements
+---
 
-🔹 Private messaging
-🔹 File sharing support
-🔹 User profile customization
+### Frontend (chat-frontend)
 
-Contributing
+1. Navigate to frontend directory: cd chat-frontend
+2. Install dependencies: npm install
+3. Start the application
+4. Open browser at:  http://localhost:3000
+  
 
-Feel free to fork this project and submit pull requests!
+---
+
+## Current Limitations
+
+- Messages are stored in-memory
+- No authentication or authorization
+- No message persistence
+- Not horizontally scalable in current form
+
+---
+
+## Future Improvements
+
+- Persist messages using a database
+- Add user authentication and authorization
+- Introduce Redis-based pub/sub for horizontal scaling
+- Message ordering guarantees
+- Rate limiting and abuse prevention
+- Dockerization for deployment
+- Monitoring and logging
+
+---
+
+## Engineering Learnings
+
+- Practical use of WebSockets for real-time communication
+- Managing concurrent client sessions
+- Designing event-driven backend systems
+- Coordinating frontend and backend integration
+
+---
+
+## Author
+
+**Abhishek Kumar**  
+Java Backend  Full-Stack Engineer
+
+
+
+
+
+
+
+
+## High-Level Architecture
 
